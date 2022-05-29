@@ -7,7 +7,7 @@ cd $dir
 database="$HOME/.kintai"
 
 usage() {
-  echo "Usage: $PROGNAME [OPTIONS] action[in|out|show]"
+  echo "Usage: $PROGNAME [OPTIONS] action[in|out|show|status]"
   echo
   echo "Options:"
   echo "  -h, --help"
@@ -40,6 +40,7 @@ touch $datafile
 [ -z "$action" ] && usage
 
 [[ "$action" == "show" ]] && cat $datafile && exit
+[[ "$action" == "status" ]] && tail -1 $datafile && exit
 [[ "$action" != "in" && "$action" != "out" ]] && usage
 
 
